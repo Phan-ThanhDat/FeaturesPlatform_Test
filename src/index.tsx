@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker'
 import makeStore from './redux/store'
 import history from './helpers/history'
 import ThemeContextProvider from './Provider'
+import './index.css'
 
 const store = makeStore()
 

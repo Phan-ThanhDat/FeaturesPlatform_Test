@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppState, CountryType } from '../../types'
-import { Box, IconButton, Badge } from '@material-ui/core'
+
+import { Box, Badge } from '@material-ui/core'
 import {
   Theme,
   withStyles,
@@ -9,7 +9,10 @@ import {
   makeStyles,
 } from '@material-ui/core/styles'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+
 import { toggleDrawer } from '../../redux/actions'
+import { AppState, CountryType } from '../../types'
+import Button from 'components/Button'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,7 +59,7 @@ const CartButton = () => {
   }, [countriesInCart])
   return (
     <Box className="cart--button--wrap">
-      <IconButton
+      <Button
         className={classes.buttonIcon}
         onClick={toggleLeftDrawer}
         aria-label="cart"
@@ -64,7 +67,7 @@ const CartButton = () => {
         <StyledBadge badgeContent={noOfCountry} color="secondary">
           <ShoppingCartIcon />
         </StyledBadge>
-      </IconButton>
+      </Button>
     </Box>
   )
 }

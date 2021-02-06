@@ -40,7 +40,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix '**/*.{ts,tsx}'"
+    "lint": "eslint --fix '**/*.{ts,tsx}'",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,6 +60,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.1.17",
+    "@storybook/addon-essentials": "^6.1.17",
+    "@storybook/addon-links": "^6.1.17",
+    "@storybook/node-logger": "^6.1.17",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.17",
     "@types/react": "^16.9.35",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7"
