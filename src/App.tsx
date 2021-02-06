@@ -9,6 +9,7 @@ import LeftDrawer from './components/AppDrawer/LeftDrawer'
 import RightDrawer from './components/AppDrawer/RightDrawer'
 export default function App() {
   const { themeMuiObject } = useMuiTheme()
+
   return (
     <ThemeProvider theme={themeMuiObject || themeCollection.red}>
       <Header />

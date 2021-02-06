@@ -1,11 +1,15 @@
 import React, { FC } from 'react'
-import { Button } from '@material-ui/core'
+
 import AddIcon from '@material-ui/icons/Add'
 import RemoveIcon from '@material-ui/icons/Remove'
 import { makeStyles } from '@material-ui/core/styles'
 import { CountryType } from '../../types'
 import { addItemTCart, decreaseItemTCart } from '../../redux/actions/cart'
 import { useDispatch } from 'react-redux'
+
+import CustomBtn from './../Button'
+import useTheme from 'Hooks/useTheme'
+import useMuiTheme from 'Hooks/useMuiTheme'
 
 const useStyles = makeStyles({
   root: {
@@ -24,12 +28,12 @@ const useStyles = makeStyles({
     padding: '0 15px',
   },
 })
-type Props = {
+export type TCartButtonGroupProps = {
   country: CountryType
   orderAmount?: number
   size?: 'small' | 'medium' | 'large'
 }
-const CartButtonGroup: FC<Props> = ({
+const CartButtonGroup: FC<TCartButtonGroupProps> = ({
   country,
   orderAmount,
   size = 'small',
@@ -42,41 +46,53 @@ const CartButtonGroup: FC<Props> = ({
   const decreaseToCart = () => {
     dispatch(decreaseItemTCart(country, orderAmount))
   }
+  const getTheme = useTheme()
+
+  const {
+    themeMuiObject: { palette },
+  } = useMuiTheme()
+  const currentBg = (palette?.['primary'] as any)[500]
 
   if (orderAmount) {
     return (
       <div className={classes.root}>
-        <Button
+        <CustomBtn
+          style={{
+            color: getTheme.themeColor.secondary,
+            backgroundColor: currentBg,
+          }}
           onClick={addToCart}
           className={classes.button}
-          size={size}
-          color="primary"
-          variant="contained"
+          display={(size === 'large' && 'big') || undefined}
         >
           <AddIcon />
-        </Button>
+        </CustomBtn>
         <p className={classes.number}>{orderAmount}</p>
-        <Button
+        <CustomBtn
           onClick={decreaseToCart}
           className={classes.button}
-          size={size}
-          color="primary"
-          variant="contained"
+          style={{
+            color: getTheme.themeColor.secondary,
+            backgroundColor: currentBg,
+          }}
+          display={(size === 'large' && 'big') || undefined}
         >
           <RemoveIcon />
-        </Button>
+        </CustomBtn>
       </div>
     )
   } else {
     return (
-      <Button
+      <CustomBtn
         onClick={addToCart}
-        size={size}
-        variant={'contained'}
-        color="primary"
+        style={{
+          color: getTheme.themeColor.secondary,
+          backgroundColor: currentBg,
+        }}
+        display={(size === 'large' && 'big') || undefined}
       >
         Add
-      </Button>
+      </CustomBtn>
     )
   }
 }

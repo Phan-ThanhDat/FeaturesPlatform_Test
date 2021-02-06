@@ -9,6 +9,7 @@ const useMuiTheme = () => {
   const [themeMuiObject, setThemeMuiObject] = useState<AugmentedTheme>(
     themeCollection[theme]
   )
+
   useEffect(() => {
     setThemeMuiObject(themeCollection[theme])
   }, [theme])

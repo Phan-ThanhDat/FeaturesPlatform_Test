@@ -17,7 +17,6 @@ export function toggleDialog(dialog: DialogType): ToggleDialogAction {
 }
 
 export function toggleDrawer(drawer: DrawerPayload): ToggleDrawerAction {
-  console.log(drawer)
   return {
     type: TOGGLE_DRAWER,
     payload: {
