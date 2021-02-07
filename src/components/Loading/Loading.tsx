@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 import styles from './Loading.module.css'
 
-interface LoadingProps {
+export interface LoadingProps {
   classes?: {
     wrapper?: string
     loader?: string

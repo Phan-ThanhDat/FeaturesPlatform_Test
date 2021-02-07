@@ -31,8 +31,8 @@ export default {
     },
     color: {
       control: {
-        type: 'inline-radio',
-        options: ['black', 'greyDark', 'greyMedium', 'blue', 'h5', 'red'],
+        type: 'select',
+        options: ['black', 'greyDark', 'greyMedium', 'blue', 'red'],
       },
     },
   },
