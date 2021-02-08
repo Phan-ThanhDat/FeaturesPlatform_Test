@@ -5,11 +5,11 @@ import { captialize } from '../../helpers/common'
 import CardImage from '../common/Card/CardImage'
 import CartButtonGroup from '../CartButtonGroup'
 
-type Props = {
+export type Props = {
   country: CountryType
   countryObjectInCart: { [char: string]: CountryType }
 }
-const Country: FC<Props> = ({ country, countryObjectInCart }) => {
+const Country: FC<Props> = ({ country, countryObjectInCart }: Props) => {
   const [orderAmount, setOrderAmount] = useState<number | undefined>(undefined)
   const showFields = [
     'capital',
@@ -27,12 +27,21 @@ const Country: FC<Props> = ({ country, countryObjectInCart }) => {
     }
   }, [country.alpha2Code, countryObjectInCart])
 
+  console.log('orderAmount', orderAmount)
+  console.log(
+    'countryObjectInCart[country.alpha2Code]',
+    countryObjectInCart[country.alpha2Code]
+  )
   return (
     <Container className="mt-5">
       <Grid container spacing={3}>
         <Grid item md={6}>
           <CardImage>
-            <img src={country.flag} alt={`${country.name}'s flag`} />
+            <img
+              src={country.flag}
+              alt={`${country.name}'s flag`}
+              style={{ width: '100%' }}
+            />
           </CardImage>
         </Grid>
         <Grid item md={6}>
